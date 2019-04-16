@@ -1,20 +1,19 @@
-<mat-card class="login-card">
+<mat-card>
   <mat-card-header>
-    <mat-card-title>Login</mat-card-title>
+    <mat-card-title>Register</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <form>
+    <form [formGroup]="userForm">
       <table cellspacing="0">
         <tr>
           <td>
             <mat-form-field>
               <input
-                name="email"
-                [(ngModel)]="email"
+                name="fullname"
+                formControlName="fullname"
                 matInput
-                placeholder="Email"
+                placeholder="FullName"
                 required
-                type="email"
               />
             </mat-form-field>
           </td>
@@ -23,8 +22,25 @@
           <td>
             <mat-form-field>
               <input
+                name="email"
+                formControlName="email"
+                matInput
+                placeholder="Email"
+                required
+                type="email"
+              />
+            </mat-form-field>
+            <!-- <mat-error *ngIf="userForm.controls.errors.email">
+              Invalid email
+            </mat-error> -->
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input
                 name="password"
-                [(ngModel)]="password"
+                formControlName="password"
                 matInput
                 placeholder="Password"
                 required
@@ -37,10 +53,8 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="login()">Login</button>
-    <span>
-      If you don't have an account?
-      <a [routerLink]="['/register']">register</a> here.
-    </span>
+    <button mat-raised-button color="primary" (click)="register()">
+      Register
+    </button>
   </mat-card-actions>
 </mat-card>
