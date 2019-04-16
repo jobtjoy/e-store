@@ -15,16 +15,20 @@ Below are our learning checklist. We will cover one by one each topic while maki
 Please follow all of my teaching videos here in YouTube.
 
 - [x] ~~_Environment ( node, npm , expressjs, vscode )_~~ [2019-04-06]
-- [x] ~~_Angular CLI_~~ [2019-04-06]
-- [ ] Use Case (Display User List)
-- [ ] Integrate with Angular Material
-- [ ] Use Components from Angular Material
+- [x] ~~_Angular CLI_~~ [2019-04-06]****
+- [X] ~~*Use Case (Display User List)*~~ [2019-04-12]
+- [X] ~~*Integrate with Angular Material*~~ [2019-04-12]
+- [X] ~~*Use Components from Angular Material*~~ [2019-04-12]
+- [X] ~~*Host application in local server ( express.js)*~~ [2019-04-12]
+- [X] ~~*Serve the data from local server*~~ [2019-04-12]
+- [ ] Create ToolBar Component
 - [ ] Organize Project (shared and core module, feature module)
-- [ ] Host application in local server ( express.js)
-- [ ] Serve the data from local server
-- [ ] Integrate app with Mongo DB.
-- [ ]
-
+- [ ] Create Authentication Module
+  - [ ] Login / Registration 
+- [ ] Integrate app with Mongo DB
+- [ ] Deploy prod code to Cloud Platform 
+  - [ ] Heroku 
+  
 ## Learning Materials
 
 - [x] Youtube Link for Introduction to `MEAN` stack and Learning Angular Step by Step.
