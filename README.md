@@ -21,13 +21,22 @@ Please follow all of my teaching videos here in YouTube.
 - [X] ~~*Use Components from Angular Material*~~ [2019-04-12]
 - [X] ~~*Host application in local server ( express.js)*~~ [2019-04-12]
 - [X] ~~*Serve the data from local server*~~ [2019-04-12]
-- [ ] Create ToolBar Component
-- [ ] Organize Project (shared and core module, feature module)
-- [ ] Create Authentication Module
-  - [ ] Login / Registration 
-- [ ] Integrate app with Mongo DB
+- [ ] adding login/logout feature
+- [ ] adding register feature
+- [ ] creating restful api server
+- [ ] consuming restful api in Auth service 
+- [ ] installing mongo db
+- [ ] Configuring mongoose in Angular App
+- [ ] Integrating Restful API with mongo db
 - [ ] Deploy prod code to Cloud Platform 
   - [ ] Heroku 
+- [ ] Create ToolBar Component
+- [ ] Organize Project (shared and core module, feature module)
+
+ 
+
+
+
   
 ## Learning Materials
 
