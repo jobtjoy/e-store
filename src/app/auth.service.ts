@@ -10,7 +10,7 @@ export interface User {
   providedIn: 'root'
 })
 export class AuthService {
-  private user$ = Subject<User>();
+  private user$ = new Subject<User>();
   constructor() {}
 
   login(email: string, password: string) {
@@ -20,9 +20,9 @@ export class AuthService {
   }
 
   get user() {
-    this.user$.asObservable();
+    return this.user$.asObservable();
   }
-  
+
   register(user: any) {
     this.user$.next(user);
     return of(user);
