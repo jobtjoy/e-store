@@ -9,10 +9,11 @@ header {
     background-image: url('../assets/logo.png');
     height: 50px;
     width: 50px;
+    vertical-align: middle;
     background-size: contain;
     background-repeat: no-repeat;
   }
-  .mat-icon{
+  .mat-icon {
     vertical-align: middle;
     margin: 0 5px;
   }
