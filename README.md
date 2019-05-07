@@ -1,6 +1,6 @@
 # PRODUCT MART _an angular app on MEAN stack_
 
-Welcome to `product mart` this is an Angular App where we are using Angular Material to develop pages and we are making this app from the scratch to learn angular.
+Welcome to `product mart` this is an Angular App where we are using Angular Material to develop pages and we are making this app from the scratch to learn angular. [Here is the details steps](https://gist.github.com/rupeshtiwari/533ae85655816b58386f7bd1e94df8a9) 
 
 This course is introduction to `MEAN` stack step by step.
 The `MEAN` stack uses `Mongo`, `Express`, `Angular` and `Node` for simple and scalable fullstack js applications
