@@ -18,5 +18,11 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run-script", "debug"]
     }
+  ],
+  "compounds": [
+    {
+      "name": "Both Debug",
+      "configurations": ["Server Debug", "Client Debug"]
+    }
   ]
 }
