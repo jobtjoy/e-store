@@ -1,22 +1,26 @@
-import { Injectable } from '@angular/core';
-import { of, Subject, throwError } from 'rxjs';
-import { switchMap, catchError } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { of, Subject, throwError } from "rxjs";
+import { switchMap, catchError } from "rxjs/operators";
+import { HttpClient } from "@angular/common/http";
 
-import { User } from './user';
+import { User } from "./user";
+import { TokenStorageService } from "./token-storage.service";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class AuthService {
   private user$ = new Subject<User>();
-  private apiUrl = '/api/auth/';
+  private apiUrl = "/api/auth/";
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private tokenStorage: TokenStorageService
+  ) {}
 
   login(email: string, password: string) {
     const loginCredentials = { email, password };
-    console.log('login credentials', loginCredentials);
+    console.log("login credentials", loginCredentials);
 
     return this.httpClient
       .post<User>(`${this.apiUrl}login`, loginCredentials)
@@ -41,19 +45,20 @@ export class AuthService {
   logout() {
     // remove user from suject
     this.setUser(null);
-    console.log('user did logout successfull');
+    console.log("user did logout successfull");
   }
 
   get user() {
     return this.user$.asObservable();
   }
 
-  register(user: any) {
-    return this.httpClient.post<User>(`${this.apiUrl}register`, user).pipe(
-      switchMap(savedUser => {
-        this.setUser(savedUser);
-        console.log(`user registered successfully`, savedUser);
-        return of(savedUser);
+  register(userToSave: any) {
+    return this.httpClient.post<any>(`${this.apiUrl}register`, userToSave).pipe(
+      switchMap(({ user, token }) => {
+        this.setUser(user);
+        this.tokenStorage.setToken(token);
+        console.log(`user registered successfully`, user);
+        return of(user);
       }),
       catchError(e => {
         console.log(`server error occured`, e);
