@@ -1,15 +1,20 @@
 {
   "name": "product-mart",
   "version": "0.0.0",
+  "engines": {
+    "node": "10.x"
+  },
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
+    "start": "node server",
     "start:server": "node server/index.js",
     "server:watch": "nodemon server",
     "serve:client": "ng serve --port 4230 -o",
     "build": "ng build",
     "build:watch": "ng build --watch",
     "build:prod": "npm run build -- --prod",
+    "postinstall": "npm run build -- --prod --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -45,7 +50,8 @@
     "passport-local": "^1.0.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "typescript": "~3.2.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
@@ -67,7 +73,6 @@
     "nodemon": "^1.18.11",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tslint": "~5.11.0",
-    "typescript": "~3.2.2"
+    "tslint": "~5.11.0"
   }
 }
