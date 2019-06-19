@@ -1,4 +1,4 @@
-import { ProductDataService } from '../../core/products/product-data.service';
+import { ProductDataService } from '@core/index';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
