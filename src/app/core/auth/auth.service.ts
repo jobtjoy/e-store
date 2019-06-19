@@ -1,10 +1,11 @@
-import { Injectable } from "@angular/core";
-import { of, Subject, throwError, EMPTY } from "rxjs";
-import { switchMap, catchError } from "rxjs/operators";
-import { HttpClient } from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { of, Subject, throwError, EMPTY } from 'rxjs';
+import { switchMap, catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
-import { User } from "../user";
-import { TokenStorageService } from "./token-storage.service";
+import { User } from '../user';
+import { TokenStorageService } from './token-storage.service';
+import { LogService } from '@core/log.service';
 
 interface UserDto {
   user: User;
@@ -12,20 +13,21 @@ interface UserDto {
 }
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class AuthService {
   private user$ = new Subject<User>();
-  private apiUrl = "/api/auth/";
+  private apiUrl = '/api/auth/';
 
   constructor(
     private httpClient: HttpClient,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService,
+    private logService: LogService
   ) {}
 
   login(email: string, password: string) {
     const loginCredentials = { email, password };
-    console.log("login credentials", loginCredentials);
+    console.log('login credentials', loginCredentials);
 
     return this.httpClient
       .post<UserDto>(`${this.apiUrl}login`, loginCredentials)
@@ -37,10 +39,7 @@ export class AuthService {
           return of(user);
         }),
         catchError(e => {
-          console.log(
-            `Your login details could not be verified. Please try again`,
-            e
-          );
+          this.logService.log(`Server Error Occurred: ${e.error.message} `, e);
           return throwError(
             `Your login details could not be verified. Please try again`
           );
@@ -54,7 +53,7 @@ export class AuthService {
 
     this.tokenStorage.removeToken();
     this.setUser(null);
-    console.log("user did logout successfull");
+    console.log('user did logout successfull');
   }
 
   get user() {

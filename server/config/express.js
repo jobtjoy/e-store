@@ -1,24 +1,25 @@
-const express = require("express");
-const path = require("path");
-const config = require("./config");
-const logger = require("morgan");
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const helmet = require("helmet");
-const routes = require("../routes");
-const passport = require("../middleware/passport");
-const compress = require("compression");
+const express = require('express');
+const path = require('path');
+const config = require('./config');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const helmet = require('helmet');
+const routes = require('../routes');
+const passport = require('../middleware/passport');
+const compress = require('compression');
+const HttpError = require('http-errors');
 
 // get app
 const app = express();
 
 // logger
-if (config.env === "development") {
-  app.use(logger("dev"));
+if (config.env === 'development') {
+  app.use(logger('dev'));
 }
 
 // get dist folder
-const distDir = path.join(__dirname, "../../dist");
+const distDir = path.join(__dirname, '../../dist');
 
 // use dist flder as hosting folder by express
 app.use(express.static(distDir));
@@ -40,9 +41,23 @@ app.use(passport.initialize());
 app.use(compress());
 
 // api router localhost:4050/api
-app.use("/api/", routes);
+app.use('/api/', routes);
 
 // serve the index.html
-app.get("*", (req, res) => res.sendFile(path.join(distDir, "index.html")));
+app.get('*', (req, res) => res.sendFile(path.join(distDir, 'index.html')));
+
+// catch the 404 and forward to error handler
+app.use((req, res, next) => {
+  const error = new HttpError(404);
+  return next(error);
+});
+
+// error handler , stack trace
+app.use((err, req, res, next) => {
+  res.status(err.status || 500).json({
+    message: err.message
+  });
+  next(err);
+});
 
 module.exports = app;
