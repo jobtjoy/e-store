@@ -1,8 +1,6 @@
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -20,12 +18,8 @@ const routes: Routes = [
     loadChildren: './products/products.module#ProductsModule'
   },
   {
-    path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent
+    path: 'auth',
+    loadChildren: './auth/auth.module#AuthModule'
   }
 ];
 
