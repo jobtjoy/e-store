@@ -1,29 +1,31 @@
-import { Component, OnDestroy } from "@angular/core";
-import { AuthService } from "../../core/auth/auth.service";
-import { Router } from "@angular/router";
-import { User } from "../../core/user";
-import { Subscription } from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AuthService } from '../../core/auth/auth.service';
+import { Router } from '@angular/router';
+import { User } from '../../core/user';
+import { Subscription, Observable } from 'rxjs';
+import { throwToolbarMixedModesError } from '@angular/material';
 
 @Component({
-  selector: "pm-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  selector: 'pm-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy {
-  user: User;
+export class AppComponent implements OnDestroy, OnInit {
+  user: Observable<User>;
   userSubscription: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) {
-    this.authService.findMe().subscribe(user => (this.user = user));
+  constructor(private authService: AuthService, private router: Router) {}
 
-    this.userSubscription = this.authService.user.subscribe(
-      user => (this.user = user)
-    );
+  ngOnInit(): void {
+    this.user = this.authService.user;
+    this.userSubscription = this.authService
+      .findMe()
+      .subscribe(user => (this.user = user));
   }
 
   logout() {
     this.authService.logout();
-    this.router.navigate(["/"]);
+    this.router.navigate(['/']);
   }
 
   ngOnDestroy(): void {
