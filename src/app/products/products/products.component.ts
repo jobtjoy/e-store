@@ -1,7 +1,7 @@
 import { ProductDataService } from '@core/index';
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MatTableDataSource, MatSort } from '@angular/material';
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { Product } from '@core/products/product';
 
 @Component({
@@ -14,7 +14,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
   loading = true;
   subscriptions = [];
   displayedColumns = ['imgUrl', 'name', 'price', 'action'];
+
   @ViewChild(MatSort) sort: MatSort;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private productDataService: ProductDataService) {}
 
@@ -25,13 +28,19 @@ export class ProductsComponent implements OnInit, OnDestroy {
         .subscribe(products => this.onDataLoad(products))
     );
   }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
   ngOnDestroy() {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
 
-  onDataLoad(products) {
+  onDataLoad(products: Product[]) {
     this.loading = false;
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
     this.dataSource.data = products;
   }
 }
