@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.productDataService
         .getAllProducts()
-        .subscribe(products => this.onDataLoad(products))
+        .subscribe((products) => this.onDataLoad(products))
     );
   }
 
