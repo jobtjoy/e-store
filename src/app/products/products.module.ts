@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductsComponent } from './products/products.component';
-import { ProductDataService } from './product-data.service';
-import { PmMaterialModule } from '../material-module';
+import { ProductDataService } from '../core/products/product-data.service';
+import { PmMaterialModule } from '../shared/material-module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
