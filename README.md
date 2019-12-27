@@ -10,53 +10,32 @@ The `MEAN` stack uses `Mongo`, `Express`, `Angular` and `Node` for simple and sc
 - [x] A = ANGULAR
 - [x] N = NODE.JS
 
-## Learning Checklist
+## Getting Source Code
 
-Below are our learning checklist. We will cover one by one each topic while making this website and hence completing our `MEAN` Stack Learning.
-Please follow all of my teaching videos here in YouTube.
+    #copy source code
+    git clone https://github.com/rupeshtiwari/product-mart.git
+    
+    #Get npm packages
+    npm i
 
-- [x] ~~_Environment ( node, npm , expressjs, vscode )_~~ [2019-04-06]
-- [x] ~~_Angular CLI_~~ [2019-04-06]\*\*\*\*
-- [x] ~~_Use Case (Display User List)_~~ [2019-04-12]
-- [x] ~~_Integrate with Angular Material_~~ [2019-04-12]
-- [x] ~~_Use Components from Angular Material_~~ [2019-04-12]
-- [x] ~~_Host application in local server ( express.js)_~~ [2019-04-12]
-- [x] ~~_Serve the data from local server_~~ [2019-04-12]
-- [ ] adding login/logout feature
-- [ ] adding register feature
-- [ ] creating restful api server
-- [ ] consuming restful api in Auth service
-- [ ] installing mongo db
-- [ ] Configuring mongoose in Angular App
-- [ ] Integrating Restful API with mongo db
-- [ ] Deploy prod code to Cloud Platform
-  - [ ] Heroku
-- [ ] Create ToolBar Component
-- [ ] Organize Project (shared and core module, feature module)
+    #Copy .env file
+    cp .env.sample .env
+
+## Running locally
+
+Make sure you have run the command `cp .env.sample .env` to get `.env` file.
+
+### Run Server
+
+    npm run server
+
+### Run Client
+
+    npm run client
+
+Open browser http://localhost:4230/products
 
 ## Learning Materials
 
-- [x] Youtube Link for Introduction to `MEAN` stack and Learning Angular Step by Step.
+- [x] Youtube Link for Introduction to `MEAN` stack and [Online e-Commerce Application | MEAN.JS Videos](https://www.youtube.com/watch?v=4b9xjzjY38c&list=PLZed_adPqIJrl9pwlERGhU-RCNOtKqvyD)
 - [x] Articles related to `Angular` and related `MEAN` stacks can be found here in https://rupeshtiwari.com
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Angular CLI
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
-
-## Getting Started.
-
-git clone
-npm i
-cp .env.sample .env
